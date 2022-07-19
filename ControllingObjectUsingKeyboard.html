@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Controlling Object Through Keyboard in JS</title>
+</head>
+<body>
+       
+<img src="../Projects/resources/lion.jpg" alt="" id="objects" style="position:absolute;">
+ 
+<script>
+
+ var obj = document.getElementById('objects');
+ window.onkeydown = moveObjects;
+
+ var LEFT_KEY = 37;
+ var TOP_KEY = 38;
+ var RIGHT_KEY = 39;
+ var BOTTOM_KEY = 40;
+ var speed = 10;
+ var deg = 0;
+
+ function moveObjects(events)
+ {
+       //  alert(events.keyCode);
+       var keycode = events.keyCode;
+ 
+        if(events.altKey && keycode == LEFT_KEY)
+        {
+              
+               obj.style.borderRadius = '50px'; 
+        } 
+        else if(events.altKey && keycode == RIGHT_KEY)
+        {
+               deg += speed;
+               obj.style.transform = 'rotate(' + deg + 'deg)'; 
+        } 
+        else if (events.shiftKey && keycode == TOP_KEY)
+        {
+              deg -= speed;
+               obj.style.transform = 'rotate(' + deg + 'deg)'; 
+        }
+
+
+       else if(keycode == LEFT_KEY )
+       {
+              obj.style.left = obj.offsetLeft - speed + 'px'; 
+       }
+       else if (keycode == RIGHT_KEY) 
+       {
+              obj.style.left = obj.offsetLeft + speed + 'px'; 
+       }
+       else if (keycode == TOP_KEY)
+       {
+              obj.style.top = obj.offsetTop - speed + 'px'; 
+       }
+       else if (keycode == BOTTOM_KEY)
+       {
+              obj.style.top = obj.offsetTop + speed + 'px'; 
+       }
+ };
+ 
+
+
+</script>
+
+</body>
+</html>
